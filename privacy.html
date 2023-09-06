@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidehiko Fujisawa - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="header" href="header.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <script>
+        $(function () {
+            $('#header').load('./header.html');
+        });
+    </script>
+    <main>
+        <div class="detail-description">
+            <h2 class="lang-ja" lang="ja">プライバシーポリシー</h2>
+            <h2 class="lang-en" lang="en">Privacy Policy</h2>
+            <br>
+            <p class="lang-ja" lang="ja">
+                当サイトでは、ユーザーのアクセス数、統計情報解析などの解析の為にGoogle, Inc.のGoogle Analyticsを利用し、計測を行っています。<br>
+                このためにCookieを用いて計測を行うことがありますが、この際にユーザーのIPアドレスなどの情報がGoogle, Inc.に送信される場合があります。<br>
+                ユーザーはこのサイトを利用した時点で、以上の事を許可したものと見なします。<br>
+                また、Cookieに関しては、ブラウザの設定で利用をブロックすることが出来ます。</p>
+            <p class="lang-en" lang="en">
+                This site uses Google Analytics of Google, Inc. for analysis such as the number of visits of users and
+                statistical information analysis.<br>
+                For this reason, measurement may be performed using cookies, information such as the user's IP address
+                may be sent to Google, Inc.<br>
+                By using this site, users consent to the above.<br>
+                In addition, the use of cookies can be blocked by browser settings.</p>
+            <br>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script>
+        $(function () {
+            $('#footer').load('./footer.html');
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
