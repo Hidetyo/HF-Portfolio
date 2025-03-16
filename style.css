@@ -143,6 +143,13 @@ header {
     cursor: pointer;
     padding: -10px 20px  !important;
   }
+
+  .menubutton2 {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: -10px 20px  !important;
+  }
 }
 
 @media screen and (min-width: 1000px){
@@ -152,7 +159,7 @@ header {
     cursor: pointer;
     padding: 10px 20px;
   }
-  .lang-switcher-single{
+  .menubutton2{
     display: none;
   }
 }
@@ -413,6 +420,9 @@ li {
   background-color: #f4f4f4;
 }
 
+.menubutton2:hover {
+  background-color: #f4f4f4;
+}
 
 .tab {
   border-bottom: 1px solid #ddd;
