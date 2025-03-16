@@ -1,4 +1,4 @@
-var lang = localStorage.getItem("lang");
+var lang = localStorage.getItem("HFPortfolio_lang");
 if (lang) {
   switchLang(lang);
 } else {
@@ -44,7 +44,7 @@ function switchLang(lang) {
   for (i = 0; i < langElements.length; i++) {
     langElements[i].style.display = "none";
   }
-  localStorage.setItem("lang", lang);
+  localStorage.setItem("HFPortfolio_lang", lang);
 }
 
 if (document.URL.match(index.html)) {
