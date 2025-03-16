@@ -128,14 +128,28 @@ header {
     margin: 0 auto 0 auto;
   }
 
-  .header-right {
-    display: none;
+  .header-right{
+    margin-right: 60px !important;
   }
 
   .lang-switcher {
-    align-items: center;
-    margin: 0 auto 0 auto;
-    margin-top: 10px;
+    display: none !important;
+  }
+
+  .menubutton {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: -10px 20px  !important;
+  }
+}
+
+@media screen and (min-width: 1000px){
+  .menubutton {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
   }
 }
 
@@ -379,13 +393,6 @@ li {
 
 .skillList {
   margin-left: 30px;
-}
-
-.menubutton {
-  background-color: #fff;
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
 }
 
 .detailButton {

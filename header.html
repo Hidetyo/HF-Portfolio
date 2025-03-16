@@ -15,11 +15,11 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-B2KJSFPJX6');
+    gtag('config', 'G-B2KJSFPJX6');
 </script>
 
 <body>
@@ -39,6 +39,16 @@
                 <button class="menubutton" onclick="location.href='./works.html'">Works</button>
                 <button class="menubutton" onclick="location.href='./contact.html'">Contact</button>
             </div>
+
+            <nav class="lang-switcher-single">
+                <div class="lang-ja" lang="ja">
+                    <button class="menubutton" onclick="switchLang('en')">English</button>
+                </div>
+                <div class="lang-en" lang="en">
+                    <button class="menubutton" onclick="switchLang('ja')">日本語</button>
+                </div>
+            </nav>
+
         </div>
         <nav class="lang-switcher">
             <button class="menubutton" onclick="switchLang('ja')">日本語</button>
