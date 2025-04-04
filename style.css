@@ -12,14 +12,14 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #333;
-  visibility: hidden;
 }
 
 header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  padding-left: 60px;
+  padding-left: 30px;
   padding-right: 60px;
 }
 
@@ -35,15 +35,16 @@ header {
 
 .header-right {
   display: flex;
-  align-items: left;
-  margin-left: 30px;
-
+ justify-content: flex-start;
+  margin-left: 50px;
 }
 
 .header-right button {
   margin-left: 1rem;
 }
 
+<<<<<<< Updated upstream
+=======
 .lang-switcher {
   align-items: right;
   margin: 0 0 0 auto
@@ -58,6 +59,7 @@ header {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .work-item:hover {
@@ -83,6 +85,7 @@ header {
 }
 
 .work-title {
+  text-decoration: none;
   font-size: 1.2em;
   margin-bottom: 5px;
   margin-left: 12px;
@@ -90,6 +93,7 @@ header {
 }
 
 .work-description {
+  text-decoration: none;
   margin-bottom: 5px;
 }
 
@@ -113,23 +117,31 @@ header {
   }
 }
 
+>>>>>>> Stashed changes
 @media screen and (max-width: 1000px) {
   header {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100px;
     margin-top: 10px;
-    margin-left: -50px;
-    margin-right: -50px;
   }
 
   .header-left {
+    margin-left: 60px;
     text-align: center;
-    margin: 0 auto 0 auto;
   }
 
-  .header-right{
+  .header-right {
+<<<<<<< Updated upstream
+    display: none;
+  }
+
+  .lang-switcher {
+    margin-left: 20px;
+    margin-top: -10px;
+=======
     margin-right: 60px !important;
   }
 
@@ -141,33 +153,35 @@ header {
     background-color: #fff;
     border: none;
     cursor: pointer;
-    padding: -10px 20px  !important;
+    padding: -10px 20px !important;
   }
 
   .menubutton2 {
     background-color: #fff;
     border: none;
     cursor: pointer;
-    padding: -10px 20px  !important;
+    padding: -10px 20px !important;
   }
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1000px) {
   .menubutton {
     background-color: #fff;
     border: none;
     cursor: pointer;
     padding: 10px 20px;
   }
-  .menubutton2{
+
+  .menubutton2 {
     display: none;
+>>>>>>> Stashed changes
   }
 }
 
 @media screen and (min-width: 1400px) {
   .intro {
     margin-top: 200px;
-    margin-bottom: 200px;
+    margin-bottom: 300px;
     margin-left: 100px;
     display: flex;
   }
@@ -201,12 +215,6 @@ header {
   }
 }
 
-iframe {
-  aspect-ratio: 16 / 9;
-  max-width: 1300px;
-  margin-bottom: -50px;
-}
-
 h1 {
   font-size: 50px;
 }
@@ -219,11 +227,11 @@ h2 {
 }
 
 h3 {
-  margin-left: 30px;
   font-size: auto;
 }
 
 p {
+  margin-left: 40px;
   font-size: 16px;
 }
 
@@ -232,61 +240,9 @@ p {
   font-size: 16px;
 }
 
-#contacttxt {
-  margin-left: 4px;
-  font-size: 13px;
-}
-
-#title {
+#title{
   font-size: 18px;
   white-space: nowrap;
-}
-
-.contacts {
-  margin-top: 10px;
-}
-
-.text_img {
-  width: 5%;
-  vertical-align: middle;
-  margin-right: 5px;
-  margin-bottom: 2px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.img {
-  max-width: 100%;
-  height: auto;
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-left: 60px;
-  margin-right: 60px;
-}
-
-.container img {
-  width: 48%;
-  margin-bottom: 1.5%;
-  margin-left: 1.5%;
-}
-
-.nav-menu {
-  display: none;
-}
-
-@media (max-width: 700px) {
-  .container img {
-    width: 100%;
-    margin-bottom: 1.5%;
-    margin-left: 1.5%;
-  }
 }
 
 @media screen and (min-width: 700px) {
@@ -297,28 +253,6 @@ a {
   }
 }
 
-footer {
-  background-color: #ffffff;
-  color: #666;
-  padding: 20px;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-footer ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-}
-
-footer li {
-  margin-left: 20px;
-}
-
 @media screen and (max-width: 700px) {
   h1 {
     font-size: 40px;
@@ -327,25 +261,16 @@ footer li {
   h2 {
     margin-top: 60px;
     margin-bottom: 5px;
-    font-size: 25px;
+    font-size: 20px;
   }
 
   p {
     font-size: 12px;
   }
 
-  ul {
-    font-size: 12px;
-  }
-
   #nomargin {
     margin-left: 4px;
     font-size: 12px;
-  }
-
-  #contacttxt {
-    margin-left: 4px;
-    font-size: 10px;
   }
 
   .intro .image {
@@ -372,7 +297,6 @@ footer li {
 
 li {
   margin-left: 40px;
-  margin-right: 40px;
 }
 
 .works {
@@ -391,45 +315,23 @@ li {
   margin-left: 16px;
 }
 
-.detail-description {
-  margin-left: 30px;
-}
-
-.detail-image {
-  max-width: 80%;
-  margin: auto;
-  display: block;
-  margin-top: 20px;
-}
-
-.skillList {
-  margin-left: 30px;
-}
-
-.detailButton {
-  display: block;
-  margin: auto;
+.menubutton {
+  background-color: #fff;
   border: none;
   cursor: pointer;
-  margin-top: 60px;
   padding: 10px 20px;
-  background-color: #ececec;
 }
 
 .menubutton:hover {
   background-color: #f4f4f4;
 }
 
-.menubutton2:hover {
-  background-color: #f4f4f4;
-}
 
 .tab {
   border-bottom: 1px solid #ddd;
   justify-content: space-between;
   margin-bottom: 20px;
-  margin-left: 33px;
-  margin-right: 33px;
+  margin-left: 40px;
 }
 
 .tab button {
@@ -461,4 +363,15 @@ li {
 .lang-en .lang-ja,
 .lang-ja .lang-en {
   display: none;
+}
+
+.indent {
+  margin-left: 50px;
+  /* インデントを調整 */
+  display: block;
+  /* ブロック要素として扱う */
+}
+
+.underline {
+  text-decoration: underline;
 }
