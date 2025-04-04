@@ -43,6 +43,81 @@ header {
   margin-left: 1rem;
 }
 
+<<<<<<< Updated upstream
+=======
+.lang-switcher {
+  align-items: right;
+  margin: 0 0 0 auto
+}
+
+.work-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.work-item:hover {
+  opacity: 0.8;
+}
+
+.work-image {
+  flex-basis: 25%;
+  margin-right: 20px;
+  min-width: 150px;
+}
+
+.work-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 300px;
+  max-height: 400px;
+}
+
+.work-info {
+  flex-basis: 60%;
+}
+
+.work-title {
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  margin-left: 12px;
+  white-space: nowrap;
+}
+
+.work-description {
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .work-item {
+    flex-direction: column;
+  }
+
+  .work-image {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .work-image {
+    flex-basis: 40%;
+  }
+
+  .work-title {
+    white-space: inherit;
+  }
+}
+
+>>>>>>> Stashed changes
 @media screen and (max-width: 1000px) {
   header {
     display: flex;
@@ -59,12 +134,47 @@ header {
   }
 
   .header-right {
+<<<<<<< Updated upstream
     display: none;
   }
 
   .lang-switcher {
     margin-left: 20px;
     margin-top: -10px;
+=======
+    margin-right: 60px !important;
+  }
+
+  .lang-switcher {
+    display: none !important;
+  }
+
+  .menubutton {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: -10px 20px !important;
+  }
+
+  .menubutton2 {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: -10px 20px !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .menubutton {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+
+  .menubutton2 {
+    display: none;
+>>>>>>> Stashed changes
   }
 }
 
@@ -253,4 +363,15 @@ li {
 .lang-en .lang-ja,
 .lang-ja .lang-en {
   display: none;
+}
+
+.indent {
+  margin-left: 50px;
+  /* インデントを調整 */
+  display: block;
+  /* ブロック要素として扱う */
+}
+
+.underline {
+  text-decoration: underline;
 }
