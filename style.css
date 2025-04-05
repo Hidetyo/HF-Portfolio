@@ -462,3 +462,14 @@ li {
 .lang-ja .lang-en {
   display: none;
 }
+
+.indent {
+  margin-left: 50px;
+  /* インデントを調整 */
+  display: block;
+  /* ブロック要素として扱う */
+}
+
+.underline {
+  text-decoration: underline;
+}
