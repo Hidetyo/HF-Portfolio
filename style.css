@@ -43,8 +43,6 @@ header {
   margin-left: 1rem;
 }
 
-<<<<<<< Updated upstream
-=======
 .lang-switcher {
   align-items: right;
   margin: 0 0 0 auto
@@ -117,7 +115,6 @@ header {
   }
 }
 
->>>>>>> Stashed changes
 @media screen and (max-width: 1000px) {
   header {
     display: flex;
@@ -134,14 +131,6 @@ header {
   }
 
   .header-right {
-<<<<<<< Updated upstream
-    display: none;
-  }
-
-  .lang-switcher {
-    margin-left: 20px;
-    margin-top: -10px;
-=======
     margin-right: 60px !important;
   }
 
@@ -174,7 +163,6 @@ header {
 
   .menubutton2 {
     display: none;
->>>>>>> Stashed changes
   }
 }
 
