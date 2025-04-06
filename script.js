@@ -2,11 +2,10 @@ var lang = localStorage.getItem("HFPortfolio_lang");
 if (lang) {
   switchLang(lang);
 } else {
-  if (window.navigator.language == "ja") {
+  if (window.navigator.language.startsWith("ja")) {
     switchLang('ja');
-  }
-  else {
-    switchLang('en')
+  } else {
+    switchLang('en');
   }
 }
 
