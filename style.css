@@ -5,14 +5,14 @@
   box-sizing: border-box;
 }
 
-/* Basic Styles */
+/* Basic Styles (最初にご提供いただいたポートフォリオサイトの style.css をほぼそのまま使用) */
 body {
-  font-family: 'Climate Crisis', cursive; /* この行は次の行で上書きされるので実質無効 */
+  font-family: 'Climate Crisis', cursive;
   font-family: 'M PLUS 1p', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #333;
-  visibility: hidden; /* FOUC対策: script.js で visible にする */
+  visibility: hidden; /* FOUC対策 */
 }
 
 header {
@@ -28,15 +28,14 @@ header {
   align-items: center;
 }
 
-/* ポートフォリオサイトのヘッダー左側に画像ロゴはないため、このスタイルは影響しない */
-.header-left img {
-  width: 100px; /* HSAサイト用だったもの */
+.header-left img { /* ポートフォリオのHTMLにはこの構造のimgはない想定 */
+  width: 100px;
   height: auto;
 }
 
 .header-right {
   display: flex;
-  align-items: center; /* left から center に変更推奨 */
+  align-items: left; /* 元の指定 */
   margin-left: 30px;
 }
 
@@ -45,21 +44,20 @@ header {
 }
 
 .lang-switcher {
-  display: flex; /* ボタンを横並びにするために必要 */
-  align-items: center; /* 縦方向中央揃え */
-  margin: 0 0 0 auto; /* 右寄せ */
+  align-items: right; /* 元の指定 */
+  margin: 0 0 0 auto;
+  display: flex;
 }
-
 .lang-switcher button+button {
   margin-left: 16px;
 }
 
-/* 汎用的な .work-item スタイル (主に works.html の各実績アイテム用) */
-.work-item {
+.work-item { /* works.html の各実績アイテムの<a>タグ */
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-  /* margin-left と margin-right は親の .work-item-container や .container で制御 */
+  margin-left: 60px; /* 元の指定 */
+  margin-right: 60px; /* 元の指定 */
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -71,564 +69,376 @@ header {
   opacity: 0.8;
 }
 
-.work-image {
-  flex-basis: 30%; /* 少し広げることも検討 (元は25%) */
+.work-image { /* works.html の実績アイテム内の画像コンテナ */
+  flex-basis: 25%; /* 元の指定 */
   margin-right: 20px;
-  min-width: 150px; /* 画像が小さくなりすぎないように */
+  min-width: 150px;
 }
 
 .work-image img {
   display: block;
   max-width: 100%;
   height: auto;
-  /* width: 300px; は削除。max-widthで制御 */
-  border: 1px solid #eee; /* 枠線 */
+  width: 300px; /* 元の指定 */
+  max-height: 400px; /* 元の指定 */
 }
 
-.work-info {
-  flex-basis: 65%; /* work-image の変更に合わせて調整 */
+.work-info { /* works.html の実績アイテム内の情報コンテナ */
+  flex-basis: 60%; /* 元の指定 */
 }
 
 .work-title {
   font-size: 1.2em;
-  margin-bottom: 8px; /* 5px から調整 */
-  margin-left: 0; /* 12px から調整、work-info内で制御 */
-  white-space: normal; /* nowrap から変更、折り返しを許可 */
+  margin-bottom: 5px;
+  margin-left: 12px;
+  white-space: nowrap;
 }
 
 .work-description {
   margin-bottom: 5px;
-  margin-left: 0; /* 16px から調整、work-info内で制御 */
-  font-size: 0.95em; /* 少し小さく */
-  line-height: 1.6;
+  margin-left: 16px; /* 元の指定 */
 }
 
-@media screen and (max-width: 800px) { /* スマホ・タブレット縦 */
+/* Media Queries (元のCSSをそのまま使用し、必要な箇所に追記・修正) */
+@media screen and (max-width: 800px) {
   .work-item {
     flex-direction: column;
-    align-items: flex-start; /* 左揃え */
-    margin-left: 0;
-    margin-right: 0;
   }
-
   .work-image {
-    margin-bottom: 15px; /* 20px から調整 */
+    margin-bottom: 20px;
     margin-right: 0;
-    flex-basis: auto; /* 自動幅 */
-    width: 100%; /* 親要素いっぱいに */
-  }
-  .work-image img{
-    width: auto; /* 固定幅指定を解除 */
-    max-height: 250px; /* スマホでの画像の高さを制限 */
-  }
-
-  .work-info {
-    flex-basis: auto; /* 自動幅 */
-    width: 100%;
-  }
-  .work-title {
-    font-size: 1.1em;
   }
 }
-
-
-/* ヘッダーレスポンシブ */
-@media screen and (max-width: 1000px) { /* 1000px以下 */
+@media screen and (max-width: 1200px) {
+  .work-image { /* works.html用 */
+    flex-basis: 40%;
+  }
+  .work-title { /* works.html用 */
+    white-space: inherit;
+  }
+}
+@media screen and (max-width: 1000px) {
   header {
     flex-direction: column;
-    align-items: center; /* 中央揃え */
-    padding: 15px 20px; /* パディング調整 */
-    height: auto;
-    margin-top: 0;
-  }
-
-  .header-left {
-    margin-bottom: 10px; /* ロゴとメニュー間のマージン */
-    text-align: center; /* タイトル中央揃え */
-  }
-  #title a { /* スマホ時のヘッダータイトルを少し大きく */
-      font-size: 1.1em;
-  }
-
-  .header-right {
-    margin-left: 0;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    height: 100px; /* 元の指定 */
+    margin-top: 10px;
+    margin-left: -50px; /* 元の指定 */
+    margin-right: -50px; /* 元の指定 */
   }
-  .header-right button, .header-right .menubutton2 { /* ボタン共通スタイル */
-    margin: 5px;
-    padding: 8px 12px; /* パディング調整 */
-    font-size: 0.9em; /* フォント調整 */
+  .header-left {
+    text-align: center;
+    margin: 0 auto 0 auto;
   }
-
-  .lang-switcher { /* フルサイズのスイッチャーは非表示 */
-    display: none !important;
+  .header-right{
+    margin-right: 60px !important; /* 元の指定 */
   }
-  .menubutton2 { /* スマホ用のスイッチャーボタン(元々はmenubutton2)を表示 */
-    display: inline-block !important; /* min-width:1001pxでnoneになるのを上書き */
+  .lang-switcher {
+    display: none !important; /* 元の指定 */
+  }
+  .menubutton {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: -10px 20px  !important; /* 注意: 元のパディング値が負 */
+  }
+  .menubutton2 {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: -10px 20px  !important; /* 注意: 元のパディング値が負 */
   }
 }
-
-@media screen and (min-width: 1001px) { /* 1001px以上 */
+@media screen and (min-width: 1001px){
   .menubutton {
     background-color: #fff;
     border: none;
     cursor: pointer;
     padding: 10px 20px;
   }
-  .menubutton2 { /* PCでは表示しない (header_xx.htmlで出し分けてるので影響小) */
+  .menubutton2{
     display: none;
   }
 }
 
-/* Introセクション */
-.intro { /* 親フレックスコンテナ */
-  display: flex;
-  align-items: center; /* 垂直中央揃え */
-  justify-content: center; /* 水平中央揃え（アイテムが少ない場合） */
-  padding: 60px 20px; /* 上下左右にパディング */
-  max-width: 1200px; /* 最大幅 */
-  margin: 0 auto; /* 中央揃え */
-}
-
-.intro > div:first-child { /* テキストコンテンツのコンテナ */
-  flex: 1; /* 利用可能なスペースを取る */
-  padding-right: 40px; /* 画像との間にスペース */
-}
-
-.intro .image { /* 画像 */
-  width: 300px; /* 基本サイズ */
-  max-width: 40%; /* 親コンテナに対する最大幅 */
-  height: auto;
-  flex-shrink: 0; /* 縮まないように */
-}
-
-@media screen and (max-width: 900px) { /* タブレット縦・スマホ横など */
+/* Intro image size adjustment - PC */
+@media screen and (min-width: 1400px) {
   .intro {
-    flex-direction: column; /* 縦積み */
-    text-align: center; /* テキストも中央揃え */
-    padding: 40px 20px;
-  }
-  .intro > div:first-child {
-    padding-right: 0;
-    margin-bottom: 30px; /* 画像との間にスペース */
+    margin-top: 100px; /* 元は200px */
+    margin-bottom: 100px; /* 元は200px */
+    margin-left: 60px;  /* 元は100px */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
   .intro .image {
-    max-width: 60%; /* 少し大きく */
-    width: 250px;
+    width: 450px; /* 元は400px, margin-left:400px */
+    height: auto;
+    margin-top: 0; /* 元は-50px */
+    margin-left: 40px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+}
+/* Intro image size adjustment - Tablet */
+@media screen and (max-width: 1399px) and (min-width: 769px) {
+  .intro {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* テキスト左寄せのため */
+    gap: 30px;
+  }
+  .intro > div:first-child { /* Text block */
+    flex: 1;
+    max-width: none; /* 元の60%から変更 */
+    text-align: left; /* テキスト左寄せ */
+  }
+  .intro .image {
+    width: 220px; /* 元の270pxから調整 */
+    height: auto;
+    padding: 0;
+    display: block;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  #introTxt { font-size: 32px; } /* タブレットでのテキストサイズ調整 */
+  #nomargin { font-size: 15px; }
+  .contacts { align-items: flex-start; display: block;}
+  .contacts p#contacttxt { font-size: 13px; justify-content: flex-start; margin-left:0; }
+  .contacts p#contacttxt .text_img { width: 18px; height: 18px; margin-right: 8px;}
+}
+/* Intro image size adjustment - Mobile (merging original 1399px and 700px logic) */
+@media screen and (max-width: 768px) {
+  .intro {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .intro > div:first-child { margin-bottom: 30px; }
+  .intro .image {
+    width: 80%;
+    max-width: 280px; /* 元の250pxから調整 */
+    height: auto;
+    padding: 0;
+    display: block;
+    margin: 0 auto; /* 上下マージンは親で調整 */
+  }
+   #contacttxt { /* スマホでの連絡先中央揃え */
+    justify-content: center;
   }
 }
 
 
-iframe { /* YouTubeなど */
-  aspect-ratio: 16 / 9;
-  max-width: 1000px; /* 最大幅調整 */
-  margin: 20px auto; /* 上下マージンと中央寄せ */
-  display: block;
-}
+iframe { aspect-ratio: 16 / 9; max-width: 1300px; margin-bottom: -50px; /* 元の指定 */ }
+h1 { font-size: 50px; }
+h2 { margin-top: 60px; margin-bottom: 5px; margin-left: 30px; font-size: 30px; }
+h3 { margin-left: 30px; font-size: auto; } /* 元の指定 (autoは無効) */
+p { font-size: 16px; }
+#nomargin { margin-left: 4px; font-size: 16px; }
+#contacttxt { margin-left: 4px; font-size: 13px; } /* indexイントロの連絡先、フッターのプライバシーに影響 */
+.contacts p#contacttxt { display: flex; align-items: center; margin-bottom: 8px; width: fit-content; }
+#title { font-size: 18px; white-space: nowrap; }
+.contacts { margin-top: 10px; }
+.text_img { width: 20px; height:20px; /* 5%から固定値に */ flex-shrink:0; margin-right: 8px; /* 5pxから調整 */ }
+a { color: inherit; text-decoration: none; }
+.img { max-width: 100%; height: auto; }
 
-h1 {
-  font-size: 42px; /* 50px から調整 */
-  line-height: 1.3;
-  margin-bottom: 0.5em;
-}
-
-h2 {
-  margin-top: 50px; /* 60px から調整 */
-  margin-bottom: 25px; /* 20px から調整 */
-  margin-left: 30px;
-  font-size: 28px; /* 30px から調整 */
-}
-
-h3 {
-  margin-left: 30px;
-  font-size: 1.2em; /* auto から具体的な値へ */
-  margin-top: 1.5em; /* 上のマージン追加 */
-  margin-bottom: 0.5em; /* 下のマージン追加 */
-}
-section h3:first-of-type { /* セクション内の最初のh3は上のマージンを減らすなど */
-    margin-top: 0;
-}
-
-
-p {
-  font-size: 16px;
-  line-height: 1.7; /* 行間調整 */
-}
-
-#nomargin { /* introセクションのpタグ */
-  margin-left: 0; /* 4px から変更、親のtext-align:centerに任せる */
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-#contacttxt { /* introセクションの連絡先 */
-  margin-left: 0; /* 4px から変更 */
-  font-size: 14px; /* 13pxから調整 */
-  display: flex;
-  align-items: center;
-  justify-content: center; /* スマホ時やintroが中央揃えの時のため */
-  margin-bottom: 8px; /* 各連絡先間のマージン */
-}
-#contacttxt .text_img {
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-  margin-bottom: 0; /* 調整 */
-}
-#contacttxt a.underline { /* 下線付きリンク */
-  font-size: inherit; /* 親から継承 */
-}
-
-
-#title { /* ヘッダーのサイト名 */
-  font-size: 20px; /* 18px から少し大きく */
-  white-space: nowrap;
-  font-weight: 700; /* M PLUS 1p の太字 */
-}
-#title a {
-    color: inherit;
-    text-decoration: none;
-}
-#title a:hover {
-    opacity: 0.8;
-}
-
-
-.contacts {
-  margin-top: 25px; /* 20px から調整 */
-}
-
-
-/* コンテナ (indexページの業績紹介、worksページで使用) */
-.container {
+.container { /* indexページの業績紹介で使用 */
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 auto; /* 左右マージンをautoにして中央揃え */
-  padding: 0 10px; /* 左右のパディング */
-  max-width: 1200px;
+  justify-content: space-between; /* 元の指定 */
+  margin-left: 60px;
+  margin-right: 60px;
 }
-
-/* indexページの「代表的な業績/制作実績」リスト用スタイル */
-.portfolio-works-list { /* セクション全体のマージン */
-    margin-bottom: 60px;
-}
-.portfolio-works-list .container ul {
+/* indexページの「代表的な業績/制作実績」セクションのレイアウト (最小限の追加) */
+.portfolio-works-list .container { justify-content: center; } /* 親コンテナを中央揃え */
+.portfolio-works-list ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
-  margin: 0;
-  justify-content: center; /* アイテムを中央に寄せる */
-  width: 100%;
+  margin: 0 -10px;
+  justify-content: center;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.portfolio-works-list .container li {
-  width: calc(50% - 30px); /* 2列。アイテム間マージン左右15pxずつを考慮 */
-  margin: 15px;
+.portfolio-works-list li {
+  width: calc(50% - 20px);
+  margin: 10px;
   box-sizing: border-box;
-  text-align: center;
-  background-color: #f9f9f9; /* 背景色を薄くつける場合 */
-  border-radius: 8px; /* 角丸 */
-  overflow: hidden; /* 画像のはみ出し防止 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 軽い影 */
 }
+.portfolio-works-list li a { display: block; }
+.portfolio-works-list li img { max-width: 100%; height: auto; display: block; margin: 0 auto 5px auto; }
 
-.portfolio-works-list .container li a {
-  display: flex; /* 画像とテキストの配置のため */
-  flex-direction: column; /* 画像とテキストを縦に */
-  height: 100%; /* aタグの高さをliに合わせる */
-  text-decoration: none;
-  color: inherit;
-}
-.portfolio-works-list .container li a:hover {
-  opacity: 0.85;
-}
-
-.portfolio-works-list .container li img {
-  width: 100%; /* liの幅いっぱいに */
-  height: auto; /* アスペクト比維持 */
-  max-height: 200px; /* 画像の高さを制限 (調整可能) */
-  object-fit: cover; /* アスペクト比を保ちつつ領域を埋める */
-  display: block;
-  /* margin: 0 auto 10px auto; は削除 (aタグでflex制御) */
-  border-bottom: 1px solid #eee; /* 画像下に区切り線 */
-}
-/* もし作品名を表示する場合のスタイル (HTMLに作品名を追加した場合) */
-.portfolio-works-list .container li .item-title {
-    padding: 10px;
-    font-size: 0.9em;
-    font-weight: bold;
-    min-height: 40px; /* タイトルの高さをある程度確保 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-@media screen and (max-width: 700px) { /* スマホ向け: indexの業績リスト */
-  .portfolio-works-list .container ul {
-     /* justify-content は center のまま */
-  }
-  .portfolio-works-list .container li {
-    width: calc(100% - 30px); /* 1列表示 */
-  }
-}
-
-
-.nav-menu {
-  display: none;
-}
-
+.nav-menu { display: none; }
 @media (min-width: 701px) {
-  main {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
+  main { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+}
+footer { background-color: #ffffff; color: #666; padding: 20px; font-size: 14px; text-align: center; margin-top: 50px; margin-bottom: 20px; }
+footer ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: flex-end; } /* 元の指定 */
+footer li { margin-left: 20px; } /* 元の指定 */
+
+@media screen and (max-width: 700px) { /* スマホ向け既存スタイル */
+  h1 { font-size: 40px; }
+  h2 { margin-top: 60px; margin-bottom: 5px; font-size: 25px; }
+  p { font-size: 12px; }
+  ul { font-size: 12px; } /* 広範囲に影響 */
+  #nomargin { margin-left: 4px; font-size: 12px; }
+  #contacttxt { /* スマホ時のイントロ連絡先とフッターのプライバシーポリシーに影響 */
+    margin-left: 4px;
+    font-size: 10px;
+  }
+  .intro .image { width: 80%; max-width: 280px; margin-top: 30px; } /* 上書き */
+  main { margin: 0 auto; padding: 0 15px; } /* mainのpaddingも追加 */
+  .container { margin-left: 20px; margin-right: 20px; } /* スマホ時コンテナのマージン */
+  .portfolio-works-list .container li { width: calc(100% - 20px); }
+  .portfolio-works-list .container li img { margin-left: 0; margin-bottom: 5px; }
+  .container img { /* 元のスマホ用スタイル。 portfolio-works-list内では上記で上書き */
+    width: 100%;
+    margin-bottom: 1.5%;
+    margin-left: 1.5%;
+  }
+  .tab { /* works.html のタブコンテナのモバイル表示調整 */
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 5px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab::-webkit-scrollbar { display: none; }
+  .tab button.tablinks, .tab button {
+    font-size: 13px;
+    padding: 8px 8px;
+    margin: 0 2px;
+    white-space: normal;
   }
 }
 
-footer {
-  background-color: #ffffff;
-  color: #666;
-  padding: 30px 20px; /* 上下パディング増やす */
-  font-size: 14px;
-  text-align: center;
-  margin-top: 60px; /* 50px から調整 */
+.lang-switcher button+button { margin-left: 16px; } /* 元の指定 */
+li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響 */
+.works { margin-top: 32px; } /* works.html のセクション用 */
+.detail-description { margin-left: 30px; }
+.detail-image { max-width: 80%; margin: auto; display: block; margin-top: 20px; }
+.skillList { margin-left: 30px; }
+.skillList ul { padding-left: 0; list-style: none; display: block; }
+.skillList li { margin-left: 0; margin-bottom: 1em; }
+
+.detailButton { display: block; margin: auto; border: none; cursor: pointer; margin-top: 60px; padding: 10px 20px; background-color: #ececec; }
+.menubutton:hover { background-color: #f4f4f4; }
+.menubutton2:hover { background-color: #f4f4f4; }
+
+/* タブスタイル (works.html用) */
+.tab {
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between; /* 元の指定 */
   margin-bottom: 20px;
-  border-top: 1px solid #eee; /* フッター上部に区切り線 */
+  margin-left: 33px;
+  margin-right: 33px;
+  text-align: center;
 }
-/* フッターのプライバシーポリシーリンクを中央揃えにするための専用クラス */
+.tab button { /* .tablinks クラスも想定 */
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-family: 'M PLUS 1p', sans-serif;
+  font-size: 16px;
+}
+.tab button:hover { background-color: #f4f4f4; }
+.tab button:focus { outline: none; }
+.tab button.active { /* JavaScriptで .active クラスを付与 */
+  background-color: #e0e0e0;
+  border-bottom: 2px solid #333;
+  font-weight: bold;
+}
+.tabcontent { display: none; }
+
+.indent { margin-left: 50px; display: block; }
+.underline { text-decoration: underline; }
+
+/* HSA Entertainment ロゴのサイズ調整と中央揃え */
+#HSA { text-align: center; margin-bottom: 60px; }
+#HSA h2 { text-align: center; margin-left: auto; margin-right: auto; }
+#HSA .indent { text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
+#HSA .container { justify-content: center; text-align: center; }
+#HSA .container > div { text-align: center; width: 100%; }
+.hsa-logo-img {
+  max-width: 300px;
+  width: auto; /* width:100%から変更 */
+  height: auto;
+  display: inline-block; /* blockから変更 */
+  margin-left: auto; /* block要素ではないので無効になるが念のため */
+  margin-right: auto; /* block要素ではないので無効になるが念のため */
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 769px) {
+  .hsa-logo-img {
+    max-width: 380px;
+  }
+}
+#HSA .container a.underline {
+  display: inline-block;
+  font-size: 1.0em;
+  font-weight: bold;
+  margin-top: 5px; /* HTMLの<br><br>と合わせて調整 */
+  padding: 5px 0;
+}
+
+/* フッターのプライバシーポリシーリンク中央揃え */
 .footer-privacy-link {
   text-align: center;
   font-size: 13px;
   margin-top: 15px;
   margin-bottom: 5px;
 }
-.footer-privacy-link small { /* smallタグのフォントサイズ調整 */
-    font-size: inherit;
-}
-
-
-@media screen and (max-width: 700px) { /* スマホ向けフォントサイズなど */
-  h1 {
-    font-size: 32px; /* 36px から調整 */
-  }
-  h2 {
-    margin-top: 30px;
-    margin-bottom: 15px;
-    font-size: 20px;
-    margin-left: 15px; /* 20pxから調整 */
-  }
-  h3 {
-    margin-left: 15px;
-    font-size: 1.0em;
-  }
-  p, .skillList ul, .skillList li, #nomargin {
-    font-size: 13px; /* 14px から調整 */
-  }
-  #contacttxt { /* indexページのアイコン付き連絡先 */
-    font-size: 12px;
-    justify-content: flex-start; /* スマホ時は左寄せに戻す */
-  }
-  #contacttxt .text_img {
-    width: 16px; /* 18px から調整 */
-    height: 16px;
-  }
-
-  .intro .image {
-    width: 180px; /* 220px から調整 */
-    margin-top: 20px; /* 30px から調整 */
-  }
-
-  main {
-    padding: 0 10px; /* スマホ時のメイン左右パディング */
-  }
-  .container {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
+.footer-privacy-link small { font-size: inherit; }
+@media screen and (max-width: 700px) {
   .footer-privacy-link {
-    font-size: 11px; /* スマホ用のフォントサイズ */
+    font-size: 12px;
     margin-top: 10px;
   }
 }
 
-/* .works セクション (works.html用) */
-.works {
-  margin-top: 32px;
-}
-
-.detail-description { /* 詳細ページ用 */
-  margin-left: 30px;
-  margin-right: 30px;
-  line-height: 1.8; /* 詳細説明の行間を少し広げる */
-}
-.detail-description p {
-    margin-bottom: 1em; /* 段落間のスペース */
-}
-.detail-description ul { /* 詳細ページ内のリスト */
-    list-style: disc; /* 通常の黒丸リストマーカー */
-    padding-left: 20px; /* リストのインデント */
-    display: block; /* flex解除 */
-}
-.detail-description ul li {
-    margin-left: 0; /* liの左マージンリセット */
-    margin-bottom: 0.5em;
-}
-
-
-.detail-image {
-  max-width: 90%; /* 80% から少し大きく */
-  margin: 25px auto; /* 上下マージン調整 */
-  display: block;
-  border: 1px solid #ddd;
-}
-
-.skillList { /* indexページのスキルリスト */
-  margin-left: 30px;
-  margin-right: 30px;
-}
-.skillList ul {
-    padding-left: 0;
-    list-style: none; /* リストマーカーなし */
-    display: block; /* flex解除 */
-}
-.skillList li {
-    margin-left: 0;
-    margin-bottom: 1.2em; /* 各スキル項目間のマージン */
-}
-.skillList strong {
-    font-weight: 700;
-    display: block; /* 太字のタイトルをブロック要素に */
-    margin-bottom: 0.3em;
-}
-
-.detailButton {
-  display: block;
-  margin: 50px auto; /* 上下マージン調整 */
-  border: none;
-  cursor: pointer;
-  padding: 12px 30px; /* パディング調整 */
-  background-color: #4a4a4a; /* ボタン色変更 */
-  color: #ffffff; /* 文字色白 */
-  font-family: 'M PLUS 1p', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.2s ease-in-out;
-}
-.detailButton:hover {
-  background-color: #333333; /* ホバー時の色 */
-}
-
-
-.menubutton:hover, .menubutton2:hover {
-  background-color: #f0f0f0; /* 少し濃いめに */
-  border-radius: 4px; /* ホバー時に角丸 */
-}
-
-/* タブスタイル (works.html用) */
-.tab {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
-  text-align: center;
-  padding-bottom: 10px; /* 下線とのスペース */
-}
-
-.tab button.tablinks {
-  background-color: transparent; /* 背景透明 */
-  border: none;
-  cursor: pointer;
-  padding: 10px 18px;
-  font-family: 'M PLUS 1p', sans-serif;
-  font-size: 16px;
-  margin: 0 5px;
-  border-bottom: 3px solid transparent; /* 非アクティブ時は透明な太い下線 */
-  transition: color 0.3s, border-color 0.3s;
-  color: #555;
-}
-
-.tab button.tablinks:hover {
-  color: #000;
-  background-color: transparent; /* ホバー時の背景変更なし */
-}
-
-.tab button.tablinks:focus {
-  outline: none;
-}
-
-.tab button.tablinks.active {
-  border-bottom: 3px solid #333;
-  font-weight: 700; /* M PLUS 1p の太字 */
-  color: #000;
-  background-color: transparent;
-}
-
-/* worksページの各実績アイテムコンテナのスタイル */
+/* works.html の実績アイテムの表示制御 (script.js と連携) */
 #works-list-items-container {
-    display: flex; /* 中の .work-item-container をflexで並べる */
-    flex-wrap: wrap;
-    justify-content: flex-start; /* 左詰め */
-    gap: 20px; /* アイテム間の溝 */
-    padding: 0 10px; /* コンテナ自体の左右パディング */
+    /* ここに特別なレイアウト指定は不要。中の .work-item-container が1行1アイテム */
 }
 .work-item-container {
-    /* display: block; はscript.jsで設定される */
-    /* flex-basis や width はCSSで設定し、script.jsでは表示/非表示のみを制御する方が良い */
-    flex-basis: calc(33.333% - 20px); /* 3列表示の場合 (溝を考慮) */
-    /* flex-basis: calc(50% - 20px); /* 2列表示の場合 */
-    /* flex-basis: calc(25% - 20px); /* 4列表示の場合 */
-    min-width: 280px; /* アイテムの最小幅 */
-    box-sizing: border-box;
-    background-color: #fff; /* 背景色 */
-    border: 1px solid #e0e0e0; /* 枠線 */
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    margin-bottom: 20px; /* 下マージンはgapで代替できるが念のため */
+    margin-bottom: 30px; /* 各実績アイテム間のスペース */
+    /* script.js で表示/非表示を制御 */
+    /* 元の .work-item が持つ margin-left:60px; margin-right:60px; は
+       .work-item-container で持つか、.work-item のままにするか検討。
+       ここでは .work-item の指定を活かす。 */
 }
-@media screen and (max-width: 1200px) {
-    #works-list-items-container {
-        gap: 15px;
-    }
-    .work-item-container {
-        flex-basis: calc(50% - 15px); /* 2列 */
-    }
+.work-item-container:last-child {
+    margin-bottom: 0;
 }
-@media screen and (max-width: 700px) {
-    #works-list-items-container {
-        gap: 15px;
-        justify-content: center; /* スマホでは中央揃え */
-    }
-    .work-item-container {
-        flex-basis: calc(100% - 15px); /* 1列 */
-        min-width: unset;
-    }
+/* .work-item-container 内の .work-item の margin をリセットまたは調整 */
+.work-item-container .work-item {
+    margin-left: 0; /* 親のコンテナのパディングやマージンで制御するため */
+    margin-right: 0;
+    width: 100%; /* 親の.work-item-containerいっぱいに広がる */
 }
 
-
-/* 元の言語スイッチャースタイル (影響確認のため残すが、通常は不要/調整) */
+/* 元の言語スイッチャースタイル (削除を強く推奨) */
+/*
 .lang-en .lang-switcher button:nth-child(1),
 .lang-ja .lang-switcher button:nth-child(2),
 .lang-en .lang-ja,
 .lang-ja .lang-en {
-  /* display: none; */ /* このルールは現状の構成では問題を起こす可能性が高いのでコメントアウト推奨 */
+  display: none;
 }
-
-.indent {
-  margin-left: 20px;
-  display: block;
-  margin-bottom: 0.8em; /* 0.5em から調整 */
-}
-
-.underline {
-  text-decoration: underline;
-}
+*/

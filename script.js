@@ -1,8 +1,6 @@
-// script.js (ポートフォリオサイト向け - タブ機能修正版)
+// script.js (ポートフォリオサイト向け - タブ機能の不具合修正 再試行版)
 
-/**
- * ページの初期化処理。
- */
+// ... (initializePagePortfolio, redirectToLangVersionPortfolio, switchLang 関数は変更なし) ...
 function initializePagePortfolio() {
     const supportedLangs = ['ja', 'en'];
     let preferredLang = localStorage.getItem("HFPortfolio_lang"); // サイト固有のキー
@@ -16,7 +14,6 @@ function initializePagePortfolio() {
         detectedLangInFile = 'en';
     }
 
-    // localStorageに言語設定がない場合、ブラウザ言語から推定し保存
     if (!preferredLang) {
         const browserLang = (window.navigator.languages && window.navigator.languages[0]) || window.navigator.language || window.navigator.userLanguage;
         const primaryBrowserLang = browserLang.substring(0, 2).toLowerCase();
@@ -28,24 +25,22 @@ function initializePagePortfolio() {
         localStorage.setItem("HFPortfolio_lang", preferredLang);
     }
 
-    // 表示中のページの言語と優先言語が異なり、かつリダイレクトループを避けるためにファイル名が明確な場合のみリダイレクト
     if (detectedLangInFile && detectedLangInFile !== preferredLang && supportedLangs.includes(preferredLang)) {
         redirectToLangVersionPortfolio(preferredLang, currentFile);
-        return; // リダイレクトするので以降の処理は中断
+        return;
     }
 
     document.body.style.visibility = "visible";
 
-    // worksページの場合、デフォルトで「全て（おすすめ順）」タブを開く
     if (typeof openTab === 'function' && (currentFile.startsWith('works_ja') || currentFile.startsWith('works_en'))) {
-        const defaultActiveButton = document.querySelector('.tablinks.active') || document.querySelector('.tab .tablinks'); // 最初のタブボタンを取得
+        const defaultActiveButton = document.querySelector('.tablinks.active') || document.querySelector('.tab .tablinks');
         if (defaultActiveButton) {
-            let initialTab = 'all_recommended'; // デフォルトはおすすめ順
+            let initialTab = 'all_recommended';
             const onclickAttr = defaultActiveButton.getAttribute('onclick');
             if (onclickAttr) {
                 const match = onclickAttr.match(/openTab\('([^']+)'/);
                 if (match && match[1]) {
-                    initialTab = match[1]; // onclick属性からタブ名を取得
+                    initialTab = match[1];
                 }
             }
             openTab(initialTab, defaultActiveButton);
@@ -53,9 +48,6 @@ function initializePagePortfolio() {
     }
 }
 
-/**
- * 指定された言語バージョンの適切なHTMLファイルにリダイレクトする。
- */
 function redirectToLangVersionPortfolio(lang, currentFilename) {
     localStorage.setItem("HFPortfolio_lang", lang);
     let baseName = "";
@@ -68,13 +60,12 @@ function redirectToLangVersionPortfolio(lang, currentFilename) {
         baseName = currentFilename.substring(0, currentFilename.length - enSuffix.length);
     } else if (currentFilename.endsWith('.html')) {
         baseName = currentFilename.substring(0, currentFilename.length - '.html'.length);
-    } else if (currentFilename === "" || currentFilename === "index") { // index や index.html の場合
+    } else if (currentFilename === "" || currentFilename === "index") {
         baseName = "index";
     } else {
         baseName = currentFilename;
     }
     if (baseName === "") baseName = "index";
-
 
     const newPage = `${baseName}_${lang}.html`;
     let currentPath = window.location.pathname;
@@ -82,7 +73,6 @@ function redirectToLangVersionPortfolio(lang, currentFilename) {
     let queryString = window.location.search;
     let hashString = window.location.hash;
 
-    // 現在のページがリダイレクト先のページと完全に同じ（クエリやハッシュも含め）でない場合のみリダイレクト
     const currentRelativePath = currentPath.substring(currentPath.lastIndexOf('/') + 1);
     if (currentRelativePath !== newPage ||
         window.location.search !== queryString ||
@@ -91,16 +81,13 @@ function redirectToLangVersionPortfolio(lang, currentFilename) {
     }
 }
 
-/**
- * 言語切り替えボタンから呼び出される関数。
- */
 function switchLang(lang) {
     const currentFile = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
     redirectToLangVersionPortfolio(lang, currentFile);
 }
 
 /**
- * タブ切り替え関数 (worksページで使用)
+ * タブ切り替え関数 (worksページで使用) - 不具合修正 再試行版
  * @param {string} tabName - 表示するタブ名 ('all_recommended', 'all_chronological', 'research', 'hobby')
  * @param {HTMLElement} elmnt - クリックされたタブボタン要素
  */
@@ -114,25 +101,29 @@ function openTab(tabName, elmnt) {
         return;
     }
 
-    // タブボタンのアクティブ状態を更新
+    // 1. タブボタンのアクティブ状態を更新
     tablinks.forEach(tablink => tablink.classList.remove("active"));
     if (elmnt) {
         elmnt.classList.add("active");
     }
 
-    // 表示すべきアイテムをフィルタリング
-    let filteredItems = [];
+    // 2. すべての実績アイテムを一旦非表示にする (DOMからは削除しない)
+    allWorkItemContainers.forEach(item => {
+        item.style.display = 'none';
+    });
+
+    // 3. 表示すべきアイテムをフィルタリング
+    let itemsToDisplay;
     if (tabName === 'all_recommended' || tabName === 'all_chronological') {
-        filteredItems = [...allWorkItemContainers];
-    } else {
-        filteredItems = allWorkItemContainers.filter(item => item.classList.contains(tabName));
+        itemsToDisplay = [...allWorkItemContainers]; // 全てのアイテムを対象
+    } else { // 'research' または 'hobby'
+        itemsToDisplay = allWorkItemContainers.filter(item => item.classList.contains(tabName));
     }
 
-    // フィルタリングされたアイテムをソート
-    let sortedItems = [...filteredItems];
-
+    // 4. フィルタリングされたアイテムをソート
+    //    ソートは表示するアイテムの「順序」を変えるため、DOM操作が必要
     if (tabName === 'all_recommended') {
-        sortedItems.sort((a, b) => {
+        itemsToDisplay.sort((a, b) => {
             const orderA = parseInt(a.dataset.recommendOrder) || Infinity;
             const orderB = parseInt(b.dataset.recommendOrder) || Infinity;
             if (orderA === orderB) {
@@ -143,24 +134,22 @@ function openTab(tabName, elmnt) {
             return orderA - orderB;
         });
     } else if (tabName === 'all_chronological' || tabName === 'research' || tabName === 'hobby') {
-        sortedItems.sort((a, b) => {
+        itemsToDisplay.sort((a, b) => {
             const dateA = new Date(a.dataset.publishDate || 0);
             const dateB = new Date(b.dataset.publishDate || 0);
-            return dateB - dateA;
+            return dateB - dateA; // 新しいものが上
         });
     }
 
-    // DOM操作:
-    while (worksListContainer.firstChild) {
-        worksListContainer.removeChild(worksListContainer.firstChild);
-    }
-
-    if (sortedItems.length > 0) {
-        sortedItems.forEach(item => {
-            worksListContainer.appendChild(item);
-            item.style.display = 'block'; // CSSでの .work-item-container の display に合わせる
+    // 5. DOM操作: ソートされた順にアイテムをコンテナに追加し直し、表示する
+    //    (worksListContainer の子要素として正しい順序で並ぶようにする)
+    if (itemsToDisplay.length > 0) {
+        itemsToDisplay.forEach(item => {
+            worksListContainer.appendChild(item); // これでDOM内の順序も変わる
+            item.style.display = 'block'; // またはCSSで定義された .work-item-container の表示形式
         });
     } else {
+        // 表示するアイテムがない場合の処理 (例: 「該当する実績はありません」メッセージ)
         // worksListContainer.innerHTML = '<p style="text-align:center; width:100%;">該当する実績はありません。</p>';
     }
 }
