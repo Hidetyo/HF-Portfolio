@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Basic Styles (最初にご提供いただいたポートフォリオサイトの style.css をほぼそのまま使用) */
+/* Basic Styles */
 body {
   font-family: 'Climate Crisis', cursive;
   font-family: 'M PLUS 1p', sans-serif;
@@ -33,7 +33,7 @@ header {
 
 .header-right {
   display: flex;
-  align-items: left; /* 元の指定 */
+  align-items: left;
   margin-left: 30px;
 }
 
@@ -45,7 +45,7 @@ header {
 }
 
 .lang-switcher {
-  align-items: right; /* 元の指定 */
+  align-items: right;
   margin: 0 0 0 auto;
   display: flex;
 }
@@ -57,8 +57,8 @@ header {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-  margin-left: 60px; /* 元の指定 */
-  margin-right: 60px; /* 元の指定 */
+  margin-left: 60px;
+  margin-right: 60px;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -71,7 +71,7 @@ header {
 }
 
 .work-image { /* works.html の実績アイテム内の画像コンテナ */
-  flex-basis: 25%; /* 元の指定 */
+  flex-basis: 25%;
   margin-right: 20px;
   min-width: 150px;
 }
@@ -80,12 +80,12 @@ header {
   display: block;
   max-width: 100%;
   height: auto;
-  width: 300px; /* 元の指定 */
-  max-height: 400px; /* 元の指定 */
+  width: 300px;
+  max-height: 400px;
 }
 
 .work-info { /* works.html の実績アイテム内の情報コンテナ */
-  flex-basis: 60%; /* 元の指定 */
+  flex-basis: 60%;
 }
 
 .work-title {
@@ -97,10 +97,10 @@ header {
 
 .work-description {
   margin-bottom: 5px;
-  margin-left: 16px; /* 元の指定 */
+  margin-left: 16px;
 }
 
-/* Media Queries (元のCSSをそのまま使用し、必要な箇所に追記・修正) */
+/* Media Queries */
 @media screen and (max-width: 800px) { /* works.htmlのアイテム スマホ表示 */
   .work-item {
     flex-direction: column;
@@ -136,7 +136,7 @@ header {
     flex-basis: 40%;
   }
   .work-title {
-    white-space: inherit; /* 元の指定 */
+    white-space: inherit;
   }
 }
 
@@ -161,19 +161,19 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 0;
-    margin-right: 0 !important; /* 元の!importantを維持しつつ値を0に */
+    margin-right: 0 !important;
     width: 100%;
   }
   .header-right .menubutton,
   .header-right .menubutton2 {
-    padding: 8px 12px !important; /* 元の負のパディングを修正 */
+    padding: 8px 12px !important;
     margin: 5px;
     font-size: 14px;
   }
   .lang-switcher {
     display: none !important;
   }
-  .menubutton2 { /* スマホ用スイッチャーボタンの表示を確保 */
+  .menubutton2 {
     display: inline-block !important;
   }
 }
@@ -194,10 +194,10 @@ header {
   .intro {
     margin-top: 100px;
     margin-bottom: 100px;
-    margin-left: 60px; /* 元の100pxから調整 */
+    margin-left: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-around; /* PCではスペースを空ける */
+    justify-content: space-around;
   }
   .intro .image {
     width: 450px;
@@ -210,43 +210,41 @@ header {
 }
 
 /* ===== タブレット表示時のイントロセクション修正 ここから ===== */
-@media screen and (max-width: 1399px) and (min-width: 769px) { /* タブレットの範囲を明確に */
+@media screen and (max-width: 1399px) and (min-width: 769px) {
   .intro {
     margin-top: 60px;
     margin-bottom: 60px;
-    /* margin-left と margin-right は削除し、max-width と margin:auto で中央揃え */
     display: flex;
-    flex-direction: row; /* 横並びを維持 */
-    align-items: center; /* 垂直方向中央揃え */
-    justify-content: center; /* テキストと画像をグループとして中央に配置 */
-    gap: 30px; /* テキストと画像の間の固定の溝 */
-    max-width: 900px; /* introセクション自体の最大幅を設定（この値は調整してください） */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 20px; /* 左右に少しパディング */
+    padding: 0 20px;
   }
 
-  .intro > div:first-child { /* テキストブロック */
-    flex-basis: auto; /* 幅は内容に合わせる */
-    flex-grow: 0;     /* 広がらない */
-    flex-shrink: 1;   /* 必要なら縮む */
-    max-width: 500px; /* テキストブロックの最大幅（調整可能） */
-    text-align: left; /* テキストは左揃えのまま */
+  .intro > div:first-child {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 1;
+    max-width: 500px;
+    text-align: left;
   }
 
   .intro .image {
-    width: 220px; /* 固定幅、またはflex-basis */
+    width: 220px;
     height: auto;
     padding: 0;
     display: block;
-    margin: 0; /* gapで制御するのでリセット */
-    flex-shrink: 0; /* 画像が縮まないように */
+    margin: 0;
+    flex-shrink: 0;
   }
 
-  /* タブレット時のフォントサイズ調整 (元のCSSにはなかったので追加) */
   #introTxt { font-size: 32px; margin-bottom: 12px; }
   #nomargin { font-size: 15px; line-height: 1.6; margin-bottom: 15px; }
-  .contacts { margin-top: 10px; align-items: flex-start; display: block; } /* 左揃えのまま */
+  .contacts { margin-top: 10px; align-items: flex-start; display: block; }
   .contacts p#contacttxt { font-size: 13px; justify-content: flex-start; margin-left:0; width: auto; }
   .contacts p#contacttxt .text_img { width: 18px; height: 18px; margin-right: 8px;}
 }
@@ -254,34 +252,35 @@ header {
 
 
 /* Intro image size adjustment - Mobile & Text Centering */
-@media screen and (max-width: 768px) { /* 700pxから変更 */
+@media screen and (max-width: 768px) {
   .intro {
     margin-top: 50px;
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center; /* スマホではテキストも中央揃え */
+    text-align: center;
   }
-  .intro > div:first-child { /* テキストブロック */
-     width: 100%; /* 親のtext-align:centerを活かすために幅100% */
+  .intro > div:first-child {
+     width: 100%;
      text-align: center;
      margin-bottom: 30px;
   }
-  #nomargin {
+  /* #nomargin のスマホ表示スタイルは、汎用的なものとHSAセクション内のものを別途定義 */
+  .intro #nomargin { /* introセクション内のnomarginに限定 */
       text-align: center;
       margin-left: auto;
       margin-right: auto;
-      max-width: 90%; /* 長文にならないように */
+      max-width: 90%;
   }
   .contacts {
-    align-items: center; /* 連絡先ブロック自体を中央に */
+    align-items: center;
     display: flex;
-    flex-direction: column; /* 縦に並べる */
+    flex-direction: column;
   }
   .contacts p#contacttxt {
-    justify-content: center; /* アイコンとテキストをその中で中央に */
-    margin-left: auto; /* p要素自体を中央に */
+    justify-content: center;
+    margin-left: auto;
     margin-right: auto;
   }
   .intro .image {
@@ -290,7 +289,7 @@ header {
     height: auto;
     padding: 0;
     display: block;
-    margin: 0 auto; /* 上マージンはテキストブロック側で調整 */
+    margin: 0 auto;
   }
 }
 
@@ -299,7 +298,7 @@ h1 { font-size: 50px; }
 h2 { margin-top: 60px; margin-bottom: 5px; margin-left: 30px; font-size: 30px; }
 h3 { margin-left: 30px; font-size: auto; }
 p { font-size: 16px; }
-#nomargin { margin-left: 4px; font-size: 16px; }
+#nomargin { margin-left: 4px; font-size: 16px; } /* デスクトップ汎用 */
 #contacttxt { margin-left: 4px; font-size: 13px; }
 .contacts p#contacttxt { display: flex; align-items: center; margin-bottom: 8px; width: fit-content; }
 #title { font-size: 18px; white-space: nowrap; }
@@ -308,14 +307,13 @@ p { font-size: 16px; }
 a { color: inherit; text-decoration: none; }
 .img { max-width: 100%; height: auto; }
 
-.container { /* indexページの業績紹介で使用 */
+.container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* 元の指定 */
+  justify-content: space-between;
   margin-left: 60px;
   margin-right: 60px;
 }
-/* indexページの「代表的な業績/制作実績」セクションのレイアウト */
 .portfolio-works-list .container { justify-content: center; }
 .portfolio-works-list ul { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0 -10px; justify-content: center; max-width: 1000px; margin-left: auto; margin-right: auto; }
 .portfolio-works-list li { width: calc(50% - 20px); margin: 10px; box-sizing: border-box; }
@@ -333,11 +331,17 @@ footer li { margin-left: 20px; }
 @media screen and (max-width: 700px) { /* スマホ向け既存スタイル */
   h1 { font-size: 40px; }
   h2 { margin-top: 60px; margin-bottom: 5px; font-size: 25px; }
-  p { font-size: 12px; }
+  p { font-size: 12px; } /* スマホでの汎用pタグのフォントサイズ */
   ul { font-size: 12px; }
-  #nomargin { margin-left: auto; margin-right: auto; font-size: 12px; text-align: center; } /* 中央揃え */
-  #contacttxt {
-    margin-left: auto; /* 中央揃え */
+  /* #nomargin の汎用スマホスタイル (introセクション外で使われる場合など) */
+  body #nomargin:not(.intro #nomargin):not(#HSA .indent p#nomargin) { /* 他の#nomarginと区別 */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+    text-align: center;
+  }
+  #contacttxt { /* スマホでの連絡先テキスト */
+    margin-left: auto;
     margin-right: auto;
     font-size: 10px;
     justify-content: center;
@@ -346,12 +350,12 @@ footer li { margin-left: 20px; }
   .container { margin-left: 20px; margin-right: 20px; padding:0; }
   .portfolio-works-list .container li { width: calc(100% - 20px); }
   .portfolio-works-list .container li img { margin-left: 0; margin-bottom: 5px; }
-  .container img {
+  .container img { /* 一般的な .container img スタイル */
     width: 100%;
     margin-bottom: 1.5%;
     margin-left: 1.5%;
   }
-  .tab { /* works.html のタブコンテナのモバイル表示調整 */
+  .tab {
     margin-left: 5px;
     margin-right: 5px;
     padding-bottom: 5px;
@@ -368,10 +372,31 @@ footer li { margin-left: 20px; }
     white-space: normal;
   }
   .footer-privacy-link { font-size: 12px; margin-top: 10px; }
+
+  /* HSA Entertainment ロゴをスマホ表示で中央揃えにするための修正 */
+  #HSA .hsa-logo-img {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* HSAセクションのインデントブロックのモバイル用マージン調整 */
+  #HSA .indent {
+    margin-left: 20px;
+    /* text-align: left; max-width: 600px; margin-right: auto; はデスクトップから継承 */
+  }
+
+  /* HSAセクションの説明文(p#nomargin)のスマホ表示での問題を修正 */
+  #HSA .indent p#nomargin { /* p#nomarginなので詳細度が高い */
+    text-align: left;
+    margin-left: 4px; /* インデントブロック内での左マージン */
+    margin-right: 0;
+    font-size: 12px; /* スマホでのフォントサイズを明示 */
+  }
 }
 
 .lang-switcher button+button { margin-left: 16px; }
-li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響。元のまま */
+li { margin-left: 40px; margin-right: 40px; }
 .works { margin-top: 32px; }
 .detail-description { margin-left: 30px; }
 .detail-image { max-width: 80%; margin: auto; display: block; margin-top: 20px; }
@@ -386,7 +411,7 @@ li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響。元のま�
 /* タブスタイル (works.html用) */
 .tab {
   border-bottom: 1px solid #ddd;
-  justify-content: space-between; /* 元の指定 */
+  justify-content: space-between;
   margin-bottom: 20px;
   margin-left: 33px;
   margin-right: 33px;
@@ -409,13 +434,24 @@ li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響。元のま�
 }
 .tabcontent { display: none; }
 
-.indent { margin-left: 50px; display: block; }
+.indent { margin-left: 50px; display: block; } /* グローバルなインデントスタイル */
 .underline { text-decoration: underline; }
 
 /* HSA Entertainment ロゴのサイズ調整と中央揃え */
 #HSA { text-align: center; margin-bottom: 60px; }
-#HSA h2 { text-align: center; margin-left: auto; margin-right: auto; }
-#HSA .indent { text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
+/* 「HSA Entertainment」見出しを左寄せにする修正 */
+#HSA h2 {
+  text-align: left;
+  margin-left: 30px;
+  margin-right: 0;
+}
+/* 「HSA Entertainment」説明文を左寄せにする修正（デスクトップ） */
+#HSA .indent {
+  text-align: left;
+  margin-left: 30px;
+  margin-right: auto;
+  display: block;
+}
 #HSA .container { justify-content: center; text-align: center; }
 #HSA .container > div { text-align: center; width: 100%; }
 .hsa-logo-img {
@@ -448,15 +484,12 @@ li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響。元のま�
   margin-bottom: 5px;
 }
 .footer-privacy-link small { font-size: inherit; }
-@media screen and (max-width: 700px) {
-  .footer-privacy-link {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-}
+/* .footer-privacy-link のスマホ表示スタイルは既に @media (max-width: 700px) 内にあります */
 
 /* works.html の実績アイテムの表示制御 (script.js と連携) */
 #works-list-items-container {}
 .work-item-container { margin-bottom: 30px; }
 .work-item-container:last-child { margin-bottom: 0; }
 .work-item-container .work-item { margin-left: 0; margin-right: 0; width: 100%; }
+/* style.css の中を探してください */
+
