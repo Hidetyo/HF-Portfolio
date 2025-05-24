@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>藤澤秀彦 - ポートフォリオサイト</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="http://fonts.googleapis.com">
     <link rel="preconnect" href="http://fonts.gstatic.com" crossorigin>
     <link href="http://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
         rel="stylesheet">
-    <link rel="icon" href="img/favicon.ico">
-
-    <meta name="description" content="藤澤秀彦のポートフォリオサイト。HCI研究、ビデオゲーム開発などの実績やスキルを紹介しています。">
+    <link rel="icon" href="img/favicon.ico"> <meta name="description" content="藤澤秀彦のポートフォリオサイト。HCI研究、ビデオゲーム開発などの実績やスキルを紹介しています。">
     <meta property="og:type" content="website">
     <meta property="og:title" content="藤澤秀彦 - ポートフォリオサイト">
     <meta property="og:description" content="藤澤秀彦のポートフォリオサイト。HCI研究、ビデオゲーム開発などの実績やスキルを紹介しています。">
     <meta property="og:site_name" content="藤澤秀彦 - ポートフォリオサイト">
-    <meta property="og:image" content="http://hidetyo.com/img/mainicon.png"> <meta property="og:url" content="http://hidetyo.com/index_ja.html">
+    <meta property="og:image" content="http://hidetyo.com/img/mainicon.png">
+    <meta property="og:url" content="http://hidetyo.com/index_ja.html">
     <meta property="og:locale" content="ja_JP">
 
     <link rel="canonical" href="http://hidetyo.com/index_ja.html" />
@@ -68,17 +68,17 @@
                 <ul>
                     <li>
                         <a href="ttt_detail_ja.html"> <img src="/img/TTT_thumbnail.png" alt="Taste-Time Traveller"></a>
-                        </li>
+                    </li>
                     <li>
                         <a href="ravinavi_detail_ja.html"><img src="/img/RaviNavi_thumbnail.png" alt="ラビィとナビィの大冒険"></a>
-                        </li>
+                    </li>
                     <li>
                         <a href="ravinavi-for-fds_detail_ja.html"><img src="/img/ravinavi_fds_thumb.png"
                                 alt="磁気ディスク版ラビィとナビィ"></a>
-                        </li>
+                    </li>
                     <li>
                         <a href="works_ja.html"> <img src="/img/Works_Arrow.png" alt="実績一覧へ"></a>
-                        </li>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -220,10 +220,14 @@
     <div id="footer-container"></div>
     <script>
         $(function () {
+            // パスは現在のサイトの公開方法に合わせて調整してください
+            // 例1: ルートディレクトリに全ファイルがある場合
             $('#header-container').load('./header_ja.html');
             $('#footer-container').load('./footer_ja.html');
+            // 例2: リポジトリ名がサブディレクトリになる場合 (例: /my-portfolio/header_ja.html)
+            // $('#header-container').load('/リポジトリ名/header_ja.html');
+            // $('#footer-container').load('/リポジトリ名/footer_ja.html');
         });
     </script>
-    <script src="script.js"></script>
-</body>
+    <script src="script.js"></script> </body>
 </html>
