@@ -460,5 +460,3 @@ li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響。元のま�
 .work-item-container { margin-bottom: 30px; }
 .work-item-container:last-child { margin-bottom: 0; }
 .work-item-container .work-item { margin-left: 0; margin-right: 0; width: 100%; }
-
-/* 元の言語スイッチャースタイル (削除済み) */
