@@ -17,9 +17,16 @@
     <meta property="og:title" content="Contact | Hidehiko Fujisawa - Portfolio">
     <meta property="og:description" content="Contact Hidehiko Fujisawa using this form.">
     <meta property="og:site_name" content="Hidehiko Fujisawa - Portfolio">
-    <meta property="og:url" content="http://hidetyo.com/contact_en.html"> <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="http://hidetyo.com/img/mainicon.png">
+    <meta property="og:url" content="http://hidetyo.com/contact_en.html">
+    <meta property="og:locale" content="en_US">
 
-    <link rel="canonical" href="http://hidetyo.com/contact_en.html" /> <link rel="alternate" hreflang="ja" href="http://hidetyo.com/contact_ja.html" /> <link rel="alternate" hreflang="en" href="http://hidetyo.com/contact_en.html" /> <link rel="alternate" hreflang="x-default" href="http://hidetyo.com/contact_ja.html" /> <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
+    <link rel="canonical" href="http://hidetyo.com/contact_en.html" />
+    <link rel="alternate" hreflang="ja" href="http://hidetyo.com/contact_ja.html" />
+    <link rel="alternate" hreflang="en" href="http://hidetyo.com/contact_en.html" />
+    <link rel="alternate" hreflang="x-default" href="http://hidetyo.com/contact_ja.html" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -39,12 +46,19 @@
         </section>
     </main>
     <div id="footer-container"></div>
-    <script>
-        $(function () {
-            $('#header-container').load('./header_en.html');
-            $('#footer-container').load('./footer_en.html');
-        });
-    </script>
     <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            if (typeof initializePagePortfolio === 'function') {
+                initializePagePortfolio();
+            }
+            if (typeof $ === 'function') {
+                $('#header-container').load('./header_en.html');
+                $('#footer-container').load('./footer_en.html');
+            } else {
+                console.error("jQuery is not loaded for contact_en.html");
+            }
+        };
+    </script>
 </body>
 </html>

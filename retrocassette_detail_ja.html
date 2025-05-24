@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>レトロカセット「ラビィとナビィ」詳細 | 藤澤秀彦 - ポートフォリオサイト</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="http://fonts.googleapis.com">
-    <link rel="preconnect" href="http://fonts.gstatic.com" crossorigin>
-    <link href="http://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
         rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="icon" href="img/favicon.ico">
 
     <meta name="description" content="藤澤秀彦が開発したレトロゲーム機向けゲームカセット「ラビィとナビィ」シリーズ（FC/FC互換機・GB/GB互換機用）の詳細情報。">
-    <meta property="og:type" content="article"> <meta property="og:title" content="レトロカセット「ラビィとナビィ」詳細 | 藤澤秀彦 - ポートフォリオサイト">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="レトロカセット「ラビィとナビィ」詳細 | 藤澤秀彦 - ポートフォリオサイト">
     <meta property="og:description" content="藤澤秀彦が開発したレトロゲーム機向けゲームカセット「ラビィとナビィ」シリーズ（FC/FC互換機・GB/GB互換機用）の詳細情報。">
     <meta property="og:site_name" content="藤澤秀彦 - ポートフォリオサイト">
-    <meta property="og:image" content="http://hidetyo.com/img/retrocassette_img.png"> <meta property="og:url" content="http://hidetyo.com/retrocassette_detail_ja.html">
+    <meta property="og:image" content="http://hidetyo.com/img/retrocassette_img.png">
+    <meta property="og:url" content="http://hidetyo.com/retrocassette_detail_ja.html">
     <meta property="og:locale" content="ja_JP">
 
     <link rel="canonical" href="http://hidetyo.com/retrocassette_detail_ja.html" />
@@ -24,7 +26,7 @@
     <link rel="alternate" hreflang="en" href="http://hidetyo.com/retrocassette_detail_en.html" />
     <link rel="alternate" hreflang="x-default" href="http://hidetyo.com/retrocassette_detail_ja.html" />
 
-    <script async src="http://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -55,16 +57,23 @@
             </p>
         </div>
         <div>
-            <button class="detailButton" onclick="window.open('http://hsa-entmt.com/raviandnavi_detail.html', '_blank', 'noopener,noreferrer')">詳細 (hsa-entmt.com)</button>
+            <button class="detailButton" onclick="window.open('http://hsa.hidetyo.com/raviandnavi_detail.html', '_blank', 'noopener,noreferrer')">詳細 (HSA.hidetyo.com)</button>
         </div>
     </main>
     <div id="footer-container"></div>
-    <script>
-        $(function () {
-            $('#header-container').load('./header_ja.html');
-            $('#footer-container').load('./footer_ja.html');
-        });
-    </script>
     <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            if (typeof initializePagePortfolio === 'function') {
+                initializePagePortfolio();
+            }
+            if (typeof $ === 'function') {
+                $('#header-container').load('./header_ja.html');
+                $('#footer-container').load('./footer_ja.html');
+            } else {
+                console.error("jQuery is not loaded for retrocassette_detail_ja.html");
+            }
+        };
+    </script>
 </body>
 </html>
