@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -12,43 +13,29 @@
         rel="stylesheet">
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-B2KJSFPJX6');
-</script>
-
 <body>
     <header>
         <div class="header-left">
-            <b class="lang-ja" id="title"><a href="index.html" lang="ja">藤澤秀彦 - ポートフォリオサイト</a> </b>
-            <b class="lang-en" id="title"><a href="index.html" lang="en">Hidehiko Fujisawa - Portfolio</a> </b>
+            <b class="lang-ja" id="title"><a href="index.html" lang="ja" class="no-underline">藤澤秀彦 - ポートフォリオサイト</a> </b>
+            <b class="lang-en" id="title"><a href="index.html" lang="en" class="no-underline">Hidehiko Fujisawa - Portfolio</a> </b>
         </div>
         <div class="header-right">
-            <nobr>
-                <div class="lang-ja" lang="ja">
-                    <button class="menubutton" onclick="location.href='./index.html'">ホーム</button>
-                    <button class="menubutton" onclick="location.href='./works.html'">実績</button>
-                    <button class="menubutton" onclick="location.href='./contact.html'">ご連絡</button>
-                    <button class="menubutton2" onclick="switchLang('en')">English</button>
-                </div>
-                <div class="lang-en" lang="en">
-                    <button class="menubutton" onclick="location.href='./index.html'">Home</button>
-                    <button class="menubutton" onclick="location.href='./works.html'">Works</button>
-                    <button class="menubutton" onclick="location.href='./contact.html'">Contact</button>
-                    <button class="menubutton2" class="lang-switcher-single" onclick="switchLang('ja')">日本語</button>
-                </div>
-            </nobr>
+            <div class="lang-ja">
+                <button class="menubutton">ホーム</button>
+                <button class="menubutton">製作物</button>
+                <button class="menubutton">ご連絡</button>
+            </div>
+            <div class="lang-en">
+                <button class="menubutton">Home</button>
+                <button class="menubutton">Works</button>
+                <button class="menubutton">Contact</button>
+            </div>
         </div>
-        <nav class="lang-switcher">
-            <button class="menubutton" onclick="switchLang('ja')">日本語</button>
-            <button class="menubutton" onclick="switchLang('en')">English</button>
-        </nav>
     </header>
+    <nav class="lang-switcher">
+        <button class="menubutton" onclick="switchLang('ja')">日本語</button>
+        <button class="menubutton" onclick="switchLang('en')">English</button>
+    </nav>
     <script src="script.js"></script>
 </body>
 

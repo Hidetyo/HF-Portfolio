@@ -5,22 +5,20 @@
   box-sizing: border-box;
 }
 
-/* Basic Styles */
+/* Basic Styles (最初にご提供いただいたポートフォリオサイトの style.css をほぼそのまま使用) */
 body {
   font-family: 'Climate Crisis', cursive;
   font-family: 'M PLUS 1p', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #333;
-  visibility: hidden;
+  visibility: hidden; /* FOUC対策 */
 }
 
 header {
   display: flex;
   align-items: center;
-  padding: 1rem;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 1rem 60px;
 }
 
 .header-left {
@@ -35,37 +33,45 @@ header {
 
 .header-right {
   display: flex;
-  align-items: left;
+  align-items: left; /* 元の指定 */
   margin-left: 30px;
-
 }
 
 .header-right button {
   margin-left: 1rem;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .lang-switcher {
-  align-items: right;
-  margin: 0 0 0 auto
+  align-items: right; /* 元の指定 */
+  margin: 0 0 0 auto;
+  display: flex;
+}
+.lang-switcher button+button {
+  margin-left: 16px;
 }
 
-.work-item {
+.work-item { /* works.html の各実績アイテムの<a>タグ */
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin-left: 60px; /* 元の指定 */
+  margin-right: 60px; /* 元の指定 */
   border: none;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .work-item:hover {
   opacity: 0.8;
 }
 
-.work-image {
-  flex-basis: 25%;
+.work-image { /* works.html の実績アイテム内の画像コンテナ */
+  flex-basis: 25%; /* 元の指定 */
   margin-right: 20px;
   min-width: 150px;
 }
@@ -74,12 +80,12 @@ header {
   display: block;
   max-width: 100%;
   height: auto;
-  width: 300px;
-  max-height: 400px;
+  width: 300px; /* 元の指定 */
+  max-height: 400px; /* 元の指定 */
 }
 
-.work-info {
-  flex-basis: 60%;
+.work-info { /* works.html の実績アイテム内の情報コンテナ */
+  flex-basis: 60%; /* 元の指定 */
 }
 
 .work-title {
@@ -91,68 +97,87 @@ header {
 
 .work-description {
   margin-bottom: 5px;
+  margin-left: 16px; /* 元の指定 */
 }
 
-@media screen and (max-width: 800px) {
+/* Media Queries (元のCSSをそのまま使用し、必要な箇所に追記・修正) */
+@media screen and (max-width: 800px) { /* works.htmlのアイテム スマホ表示 */
   .work-item {
     flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
   }
-
   .work-image {
     margin-bottom: 20px;
+    margin-right: 0;
+    width: 100%;
+    flex-basis: auto;
+  }
+  .work-image img{
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+  }
+  .work-info {
+      width:100%;
+      margin-left:0;
+  }
+  .work-title {
+      margin-left:0;
+      text-align: center;
+  }
+  .work-description{
+      margin-left:0;
+      text-align: center;
   }
 }
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px) { /* works.htmlのアイテム 中間サイズ */
   .work-image {
     flex-basis: 40%;
   }
-
   .work-title {
-    white-space: inherit;
+    white-space: inherit; /* 元の指定 */
   }
 }
 
+/* ヘッダーのレスポンシブ修正 */
 @media screen and (max-width: 1000px) {
   header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: auto;
     margin-top: 10px;
-    margin-left: -50px;
-    margin-right: -50px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1rem 20px;
   }
-
   .header-left {
     text-align: center;
-    margin: 0 auto 0 auto;
+    margin: 0 0 10px 0;
   }
-
-  .header-right{
-    margin-right: 60px !important;
+  .header-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0 !important; /* 元の!importantを維持しつつ値を0に */
+    width: 100%;
   }
-
+  .header-right .menubutton,
+  .header-right .menubutton2 {
+    padding: 8px 12px !important; /* 元の負のパディングを修正 */
+    margin: 5px;
+    font-size: 14px;
+  }
   .lang-switcher {
     display: none !important;
   }
-
-  .menubutton {
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: -10px 20px  !important;
-  }
-
-  .menubutton2 {
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: -10px 20px  !important;
+  .menubutton2 { /* スマホ用スイッチャーボタンの表示を確保 */
+    display: inline-block !important;
   }
 }
-
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1001px){
   .menubutton {
     background-color: #fff;
     border: none;
@@ -164,312 +189,274 @@ header {
   }
 }
 
+/* Intro image size adjustment - PC */
 @media screen and (min-width: 1400px) {
-  .intro {
-    margin-top: 200px;
-    margin-bottom: 200px;
-    margin-left: 100px;
-    display: flex;
-  }
-
-  .intro .image {
-    width: 400px;
-    height: auto;
-    margin-top: -50px;
-    margin-left: 400px;
-    padding: 0;
-  }
-}
-
-@media screen and (max-width: 1400px) {
   .intro {
     margin-top: 100px;
     margin-bottom: 100px;
+    margin-left: 60px; /* 元の100pxから調整 */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around; /* PCではスペースを空ける */
+  }
+  .intro .image {
+    width: 450px;
+    height: auto;
+    margin-top: 0;
+    margin-left: 40px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* ===== タブレット表示時のイントロセクション修正 ここから ===== */
+@media screen and (max-width: 1399px) and (min-width: 769px) { /* タブレットの範囲を明確に */
+  .intro {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    /* margin-left と margin-right は削除し、max-width と margin:auto で中央揃え */
+    display: flex;
+    flex-direction: row; /* 横並びを維持 */
+    align-items: center; /* 垂直方向中央揃え */
+    justify-content: center; /* テキストと画像をグループとして中央に配置 */
+    gap: 30px; /* テキストと画像の間の固定の溝 */
+    max-width: 900px; /* introセクション自体の最大幅を設定（この値は調整してください） */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px; /* 左右に少しパディング */
+  }
+
+  .intro > div:first-child { /* テキストブロック */
+    flex-basis: auto; /* 幅は内容に合わせる */
+    flex-grow: 0;     /* 広がらない */
+    flex-shrink: 1;   /* 必要なら縮む */
+    max-width: 500px; /* テキストブロックの最大幅（調整可能） */
+    text-align: left; /* テキストは左揃えのまま */
   }
 
   .intro .image {
-    width: 300px;
+    width: 220px; /* 固定幅、またはflex-basis */
     height: auto;
     padding: 0;
     display: block;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin: 0; /* gapで制御するのでリセット */
+    flex-shrink: 0; /* 画像が縮まないように */
+  }
+
+  /* タブレット時のフォントサイズ調整 (元のCSSにはなかったので追加) */
+  #introTxt { font-size: 32px; margin-bottom: 12px; }
+  #nomargin { font-size: 15px; line-height: 1.6; margin-bottom: 15px; }
+  .contacts { margin-top: 10px; align-items: flex-start; display: block; } /* 左揃えのまま */
+  .contacts p#contacttxt { font-size: 13px; justify-content: flex-start; margin-left:0; width: auto; }
+  .contacts p#contacttxt .text_img { width: 18px; height: 18px; margin-right: 8px;}
+}
+/* ===== タブレット表示時のイントロセクション修正 ここまで ===== */
+
+
+/* Intro image size adjustment - Mobile & Text Centering */
+@media screen and (max-width: 768px) { /* 700pxから変更 */
+  .intro {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* スマホではテキストも中央揃え */
+  }
+  .intro > div:first-child { /* テキストブロック */
+     width: 100%; /* 親のtext-align:centerを活かすために幅100% */
+     text-align: center;
+     margin-bottom: 30px;
+  }
+  #nomargin {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%; /* 長文にならないように */
+  }
+  .contacts {
+    align-items: center; /* 連絡先ブロック自体を中央に */
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+  }
+  .contacts p#contacttxt {
+    justify-content: center; /* アイコンとテキストをその中で中央に */
+    margin-left: auto; /* p要素自体を中央に */
+    margin-right: auto;
+  }
+  .intro .image {
+    width: 80%;
+    max-width: 280px;
+    height: auto;
+    padding: 0;
+    display: block;
+    margin: 0 auto; /* 上マージンはテキストブロック側で調整 */
   }
 }
 
-iframe {
-  aspect-ratio: 16 / 9;
-  max-width: 1300px;
-  margin-bottom: -50px;
-}
+iframe { aspect-ratio: 16 / 9; max-width: 1300px; margin-bottom: -50px; }
+h1 { font-size: 50px; }
+h2 { margin-top: 60px; margin-bottom: 5px; margin-left: 30px; font-size: 30px; }
+h3 { margin-left: 30px; font-size: auto; }
+p { font-size: 16px; }
+#nomargin { margin-left: 4px; font-size: 16px; }
+#contacttxt { margin-left: 4px; font-size: 13px; }
+.contacts p#contacttxt { display: flex; align-items: center; margin-bottom: 8px; width: fit-content; }
+#title { font-size: 18px; white-space: nowrap; }
+.contacts { margin-top: 10px; }
+.text_img { width: 20px; height:20px; flex-shrink:0; margin-right: 8px; }
+a { color: inherit; text-decoration: none; }
+.img { max-width: 100%; height: auto; }
 
-h1 {
-  font-size: 50px;
-}
-
-h2 {
-  margin-top: 60px;
-  margin-bottom: 5px;
-  margin-left: 30px;
-  font-size: 30px;
-}
-
-h3 {
-  margin-left: 30px;
-  font-size: auto;
-}
-
-p {
-  font-size: 16px;
-}
-
-#nomargin {
-  margin-left: 4px;
-  font-size: 16px;
-}
-
-#contacttxt {
-  margin-left: 4px;
-  font-size: 13px;
-}
-
-#title {
-  font-size: 18px;
-  white-space: nowrap;
-}
-
-.contacts {
-  margin-top: 10px;
-}
-
-.text_img {
-  width: 5%;
-  vertical-align: middle;
-  margin-right: 5px;
-  margin-bottom: 2px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.img {
-  max-width: 100%;
-  height: auto;
-}
-
-.container {
+.container { /* indexページの業績紹介で使用 */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between; /* 元の指定 */
   margin-left: 60px;
   margin-right: 60px;
 }
+/* indexページの「代表的な業績/制作実績」セクションのレイアウト */
+.portfolio-works-list .container { justify-content: center; }
+.portfolio-works-list ul { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0 -10px; justify-content: center; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.portfolio-works-list li { width: calc(50% - 20px); margin: 10px; box-sizing: border-box; }
+.portfolio-works-list li a { display: block; }
+.portfolio-works-list li img { max-width: 100%; height: auto; display: block; margin: 0 auto 5px auto; }
 
-.container img {
-  width: 48%;
-  margin-bottom: 1.5%;
-  margin-left: 1.5%;
+.nav-menu { display: none; }
+@media (min-width: 701px) {
+  main { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 }
+footer { background-color: #ffffff; color: #666; padding: 20px; font-size: 14px; text-align: center; margin-top: 50px; margin-bottom: 20px; }
+footer ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: flex-end; }
+footer li { margin-left: 20px; }
 
-.nav-menu {
-  display: none;
-}
-
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) { /* スマホ向け既存スタイル */
+  h1 { font-size: 40px; }
+  h2 { margin-top: 60px; margin-bottom: 5px; font-size: 25px; }
+  p { font-size: 12px; }
+  ul { font-size: 12px; }
+  #nomargin { margin-left: auto; margin-right: auto; font-size: 12px; text-align: center; } /* 中央揃え */
+  #contacttxt {
+    margin-left: auto; /* 中央揃え */
+    margin-right: auto;
+    font-size: 10px;
+    justify-content: center;
+  }
+  main { margin: 0 auto; padding: 0 15px; }
+  .container { margin-left: 20px; margin-right: 20px; padding:0; }
+  .portfolio-works-list .container li { width: calc(100% - 20px); }
+  .portfolio-works-list .container li img { margin-left: 0; margin-bottom: 5px; }
   .container img {
     width: 100%;
     margin-bottom: 1.5%;
     margin-left: 1.5%;
   }
-}
-
-@media screen and (min-width: 700px) {
-  main {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .tab { /* works.html のタブコンテナのモバイル表示調整 */
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 5px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-}
-
-footer {
-  background-color: #ffffff;
-  color: #666;
-  padding: 20px;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-footer ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-}
-
-footer li {
-  margin-left: 20px;
-}
-
-@media screen and (max-width: 700px) {
-  h1 {
-    font-size: 40px;
+  .tab::-webkit-scrollbar { display: none; }
+  .tab button.tablinks, .tab button {
+    font-size: 13px;
+    padding: 8px 8px;
+    margin: 0 2px;
+    white-space: normal;
   }
-
-  h2 {
-    margin-top: 60px;
-    margin-bottom: 5px;
-    font-size: 25px;
-  }
-
-  p {
-    font-size: 12px;
-  }
-
-  ul {
-    font-size: 12px;
-  }
-
-  #nomargin {
-    margin-left: 4px;
-    font-size: 12px;
-  }
-
-  #contacttxt {
-    margin-left: 4px;
-    font-size: 10px;
-  }
-
-  .intro .image {
-    width: 250px;
-    height: auto;
-    padding: 0;
-    display: block;
-    margin: 0 auto;
-    margin-top: 100px;
-  }
-
-  main {
-    margin: 0 auto;
-  }
+  .footer-privacy-link { font-size: 12px; margin-top: 10px; }
 }
 
-.lang-switcher {
-  display: flex;
-}
+.lang-switcher button+button { margin-left: 16px; }
+li { margin-left: 40px; margin-right: 40px; } /* 広範囲に影響。元のまま */
+.works { margin-top: 32px; }
+.detail-description { margin-left: 30px; }
+.detail-image { max-width: 80%; margin: auto; display: block; margin-top: 20px; }
+.skillList { margin-left: 30px; }
+.skillList ul { padding-left: 0; list-style: none; display: block; }
+.skillList li { margin-left: 0; margin-bottom: 1em; }
 
-.lang-switcher button+button {
-  margin-left: 16px;
-}
+.detailButton { display: block; margin: auto; border: none; cursor: pointer; margin-top: 60px; padding: 10px 20px; background-color: #ececec; }
+.menubutton:hover { background-color: #f4f4f4; }
+.menubutton2:hover { background-color: #f4f4f4; }
 
-li {
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-.works {
-  margin-top: 32px;
-}
-
-.work-list li {
-  margin-bottom: 16px;
-}
-
-.work-list h4 {
-  margin-bottom: 8px;
-}
-
-.work-description {
-  margin-left: 16px;
-}
-
-.detail-description {
-  margin-left: 30px;
-}
-
-.detail-image {
-  max-width: 80%;
-  margin: auto;
-  display: block;
-  margin-top: 20px;
-}
-
-.skillList {
-  margin-left: 30px;
-}
-
-.detailButton {
-  display: block;
-  margin: auto;
-  border: none;
-  cursor: pointer;
-  margin-top: 60px;
-  padding: 10px 20px;
-  background-color: #ececec;
-}
-
-.menubutton:hover {
-  background-color: #f4f4f4;
-}
-
-.menubutton2:hover {
-  background-color: #f4f4f4;
-}
-
+/* タブスタイル (works.html用) */
 .tab {
   border-bottom: 1px solid #ddd;
-  justify-content: space-between;
+  justify-content: space-between; /* 元の指定 */
   margin-bottom: 20px;
   margin-left: 33px;
   margin-right: 33px;
+  text-align: center;
 }
-
 .tab button {
   background-color: #fff;
   border: none;
   cursor: pointer;
   padding: 10px 20px;
+  font-family: 'M PLUS 1p', sans-serif;
+  font-size: 16px;
 }
-
-.tab button:hover {
-  background-color: #f4f4f4;
+.tab button:hover { background-color: #f4f4f4; }
+.tab button:focus { outline: none; }
+.tab button.active {
+  background-color: #e0e0e0;
+  border-bottom: 2px solid #333;
+  font-weight: bold;
 }
+.tabcontent { display: none; }
 
-.tab button:focus {
-  outline: none;
-}
+.indent { margin-left: 50px; display: block; }
+.underline { text-decoration: underline; }
 
-.tab .active {
-  background-color: #ddd;
-}
-
-.tabcontent {
-  display: none;
-}
-
-/* Language-specific Styles */
-.lang-en .lang-switcher button:nth-child(1),
-.lang-ja .lang-switcher button:nth-child(2),
-.lang-en .lang-ja,
-.lang-ja .lang-en {
-  display: none;
-}
-
-.indent {
-  margin-left: 50px;
-  /* インデントを調整 */
+/* HSA Entertainment ロゴのサイズ調整と中央揃え */
+#HSA { text-align: center; margin-bottom: 60px; }
+#HSA h2 { text-align: center; margin-left: auto; margin-right: auto; }
+#HSA .indent { text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
+#HSA .container { justify-content: center; text-align: center; }
+#HSA .container > div { text-align: center; width: 100%; }
+.hsa-logo-img {
+  max-width: 300px;
+  width: auto;
+  height: auto;
   display: block;
-  /* ブロック要素として扱う */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 769px) {
+  .hsa-logo-img {
+    max-width: 380px;
+  }
+}
+#HSA .container a.underline {
+  display: inline-block;
+  font-size: 1.0em;
+  font-weight: bold;
+  margin-top: 5px;
+  padding: 5px 0;
 }
 
-.underline {
-  text-decoration: underline;
+/* フッターのプライバシーポリシーリンク中央揃え */
+.footer-privacy-link {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
+.footer-privacy-link small { font-size: inherit; }
+@media screen and (max-width: 700px) {
+  .footer-privacy-link {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
+
+/* works.html の実績アイテムの表示制御 (script.js と連携) */
+#works-list-items-container {}
+.work-item-container { margin-bottom: 30px; }
+.work-item-container:last-child { margin-bottom: 0; }
+.work-item-container .work-item { margin-left: 0; margin-right: 0; width: 100%; }
