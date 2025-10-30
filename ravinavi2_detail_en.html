@@ -48,7 +48,7 @@
         <br>
         <h3>Significant Quality Improvements Through Meticulous Care</h3>
         <div class="detail-description">
-           <p>
+            <p>
                 I am putting in more development hours and meticulous care to improve the graphics quality and
                 playability, which were challenges in the previous title, "The Adventure of Ravi 'n' Navi (2021)".
                 <br>
@@ -61,7 +61,7 @@
         <br>
         <h3>Meticulously Crafted Artwork, Trailers, and Related Assets</h3>
         <div class="detail-description">
-          <p>
+            <p>
                 I am preparing high-quality rendered images and videos using 3DCG software to properly convey the
                 characters' appeal.
             </p>
@@ -70,13 +70,19 @@
         <br>
     </main>
     <div id="footer-container"></div>
-    <script>
-        $(function () {
-            $('#header-container').load('./header_en.html');
-            $('#footer-container').load('./footer_en.html');
-        });
-    </script>
+
     <script src="script.js"></script>
+
+    <script>
+        window.onload = function () {
+            if (typeof $ === 'function') {
+                $('#header-container').load('./header_en.html');
+                $('#footer-container').load('./footer_en.html');
+            } else {
+                console.error("jQuery is not loaded for ravinavi2_detail_en.html");
+            }
+        };
+    </script>
 </body>
 
 </html>
