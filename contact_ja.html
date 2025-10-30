@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ご連絡 | 藤澤秀彦 - ポートフォリオサイト</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
         rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" href="img/favicon.ico">
+
     <meta name="description" content="藤澤秀彦へのご連絡はこちらのフォームからお願いいたします。">
     <meta property="og:type" content="website">
     <meta property="og:title" content="ご連絡 | 藤澤秀彦 - ポートフォリオサイト">
     <meta property="og:description" content="藤澤秀彦へのご連絡はこちらのフォームからお願いいたします。">
     <meta property="og:site_name" content="藤澤秀彦 - ポートフォリオサイト">
+    <meta property="og:image" content="http://hidetyo.com/img/mainicon.png">
     <meta property="og:url" content="http://hidetyo.com/contact_ja.html">
     <meta property="og:locale" content="ja_JP">
 
@@ -43,12 +46,19 @@
         </section>
     </main>
     <div id="footer-container"></div>
-    <script>
-        $(function () {
-            $('#header-container').load('./header_ja.html');
-            $('#footer-container').load('./footer_ja.html');
-        });
-    </script>
     <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            if (typeof initializePagePortfolio === 'function') {
+                initializePagePortfolio();
+            }
+            if (typeof $ === 'function') {
+                $('#header-container').load('./header_ja.html');
+                $('#footer-container').load('./footer_ja.html');
+            } else {
+                console.error("jQuery is not loaded for contact_ja.html");
+            }
+        };
+    </script>
 </body>
 </html>

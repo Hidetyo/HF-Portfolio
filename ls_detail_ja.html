@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laptop SpaceTop 詳細 | 藤澤秀彦 - ポートフォリオサイト</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="http://fonts.googleapis.com">
-    <link rel="preconnect" href="http://fonts.gstatic.com" crossorigin>
-    <link href="http://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
         rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="icon" href="img/favicon.ico">
 
     <meta name="description" content="「Laptop SpaceTop」の詳細。二次元・三次元の融合操作を実現する折りたたみモバイルPC。インタラクション2023で発表。">
@@ -26,7 +26,7 @@
     <link rel="alternate" hreflang="en" href="http://hidetyo.com/ls_detail_en.html" />
     <link rel="alternate" hreflang="x-default" href="http://hidetyo.com/ls_detail_ja.html" />
 
-    <script async src="http://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -59,12 +59,19 @@
         </div>
     </main>
     <div id="footer-container"></div>
-    <script>
-        $(function () {
-            $('#header-container').load('./header_ja.html');
-            $('#footer-container').load('./footer_ja.html');
-        });
-    </script>
     <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            if (typeof initializePagePortfolio === 'function') {
+                initializePagePortfolio();
+            }
+            if (typeof $ === 'function') {
+                $('#header-container').load('./header_ja.html');
+                $('#footer-container').load('./footer_ja.html');
+            } else {
+                console.error("jQuery is not loaded for ls_detail_ja.html");
+            }
+        };
+    </script>
 </body>
 </html>
