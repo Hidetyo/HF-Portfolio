@@ -70,17 +70,16 @@
         <br>
     </main>
     <div id="footer-container"></div>
-
     <script src="script.js"></script>
-
     <script>
-        window.onload = function () {
+        window.onload = function() {
+            if (typeof initializePagePortfolio === 'function') {
+                initializePagePortfolio();
+            }
             if (typeof $ === 'function') {
                 $('#header-container').load('./header_en.html');
                 $('#footer-container').load('./footer_en.html');
-            } else {
-                console.error("jQuery is not loaded for ravinavi2_detail_en.html");
-            }
+            } 
         };
     </script>
 </body>
