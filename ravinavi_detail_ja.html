@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,19 +29,21 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2KJSFPJX6"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-B2KJSFPJX6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-B2KJSFPJX6');
     </script>
 </head>
+
 <body>
     <div id="header-container"></div>
     <main>
         <br>
         <br>
         <p style="text-align: center;"> <iframe width="100%" height="100%"
-                src="https://www.youtube.com/embed/Ht-BADDh8dQ?si=vf6OJ_eZ2p8dnySb" title="YouTube video player" frameborder="0"
+                src="https://www.youtube.com/embed/Ht-BADDh8dQ?si=vf6OJ_eZ2p8dnySb" title="YouTube video player"
+                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe></p>
         <h2>ラビィとナビィの大冒険</h2>
@@ -76,17 +79,23 @@
                 <li>Unityインターハイ2020 優勝</li>
             </ul>
         </div>
+        <br>
+        <div class="summary-container" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+            <img src="img/RN_summary.jpg" alt="Summary"
+                style="width: 100%; max-width: 850px; height: auto; border: 1px solid #f0f0f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        </div>
+        <br>
         <div>
             <button class="detailButton"
                 onclick="window.open('https://store-jp.nintendo.com/list/software/70010000043586.html', '_blank', 'noopener,noreferrer')">詳細(ニンテンドーeショップ)</button>
-                  <button class="detailButton"
+            <button class="detailButton"
                 onclick="window.open('https://store.steampowered.com/app/3841250/_/', '_blank', 'noopener,noreferrer')">詳細(Steam)</button>
         </div>
     </main>
     <div id="footer-container"></div>
     <script src="script.js"></script>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             if (typeof initializePagePortfolio === 'function') {
                 initializePagePortfolio();
             }
@@ -99,4 +108,5 @@
         };
     </script>
 </body>
+
 </html>

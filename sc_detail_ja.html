@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,15 @@
         gtag('config', 'G-B2KJSFPJX6');
     </script>
 </head>
+
 <body>
     <div id="header-container"></div>
     <main>
         <br>
         <br>
         <p style="text-align: center;"> <iframe width="100%" height="100%"
-                src="https://www.youtube.com/embed/RoROk5CPQf4?si=C54GmSZtLGEuXeRN" title="YouTube video player" frameborder="0"
+                src="https://www.youtube.com/embed/RoROk5CPQf4?si=C54GmSZtLGEuXeRN" title="YouTube video player"
+                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe></p>
         <h2>Shadow Chamber: オブジェクトの像とその影の間に手を挿入して操作する3DCADシステム</h2>
@@ -53,14 +56,22 @@
                 本稿で提案するシステムは，透過液晶ディスプレイにオブジェクトの像を表示し，その奥に配置されたタッチパネルディスプレイにオブジェクトの影を仮想的に表示させる構造となっている．ユーザは，これらのディスプレイの間に手を挿入し，指先で仮想的な影に触れる．この影をタッチ操作することで影に連動してオブジェクトが変形する．これにより，モデルの形状をデザインする3DCADシステムとして利用できる．
             </p>
         </div>
+        <br>
+        <div class="summary-container" style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+            <img src="img/SC_summary.jpg" alt="Summary"
+                style="width: 100%; max-width: 850px; height: auto; border: 1px solid #f0f0f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        </div>
+        <br>
         <div>
-            <button class="detailButton" onclick="window.open('https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=227515&item_no=1&page_id=13&block_id=8', '_blank', 'noopener,noreferrer')">詳細 / PDF(ipsj.ixsq.nii.ac.jp)</button>
+            <button class="detailButton"
+                onclick="window.open('https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=227515&item_no=1&page_id=13&block_id=8', '_blank', 'noopener,noreferrer')">詳細
+                / PDF(ipsj.ixsq.nii.ac.jp)</button>
         </div>
     </main>
     <div id="footer-container"></div>
     <script src="script.js"></script>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             if (typeof initializePagePortfolio === 'function') {
                 initializePagePortfolio();
             }
@@ -73,4 +84,5 @@
         };
     </script>
 </body>
+
 </html>
